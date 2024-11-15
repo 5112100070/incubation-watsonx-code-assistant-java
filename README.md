@@ -41,5 +41,5 @@ Below are the links for eclipse installation
 ![screenshot](./image/3.Wca4ejchat.png)
 
 7. Installing Liberty Tools
-Install the liberty tools from eclipse market place as shown below [Help >> Eclipse Marketplace]
+Install the liberty tools (24.0.6) and IBM Liberty Developer Tools (24.1) from eclipse market place as shown below [Help >> Eclipse Marketplace]
 ![screenshot](./image/6.LibertyTools.png)
