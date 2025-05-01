@@ -1,45 +1,138 @@
-# Incubation Watsonx Code Assistant Java (WCA4EJ)
+# Installation guide for WCA on VSCode
 
-## Environment setup
+This document gives infomration on installing software tools with IDE VSCode that are needed to run **Watson Code Assistant**
+
+
+## Environment setup 
+
 ### 1. Java installation
-Install Java21 using this link [Download Java](https://www.oracle.com/sg/java/technologies/downloads/)
-> Note: After installing java,add java to `PATH` variable and set `JAVA_HOME` envitonment variable
+
+#### Install Java21 using this link:
+- [Download Java for MacOS - Arm64](https://download.oracle.com/java/21/latest/jdk-21_macos-aarch64_bin.tar.gz)
+- [Download Java for MacOS - x86](https://download.oracle.com/java/21/latest/jdk-21_macos-x64_bin.tar.gz)
+- [Download Java for Windows](https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip)
+
+All the above are compressed files, you can extract them to any folder in your local.
+
+- Check if Java is installed properly:
+```bash
+java --version
+```
+
+- After installing java, add java to `PATH` variable and set `JAVA_HOME` envitonment variable
+- **For Mac**:
+  - Open .zshrc or .bash_profile
+      ```bash
+      nano ~/.zshrc
+      ```
+  - Add the following lines
+      ```bash
+      export JAVA_HOME=/Library/Java/JavaVirtualMachines/<java version>/Contents/Home
+      ```
+      ```bash
+      export PATH=$JAVA_HOME/bin:$PATH
+      ```
+  - Save the file and exit (press CTRL + X, then Y, and hit Enter)
+  - Reload the shell configuration so the changes take effect.
+      ```bash
+      source ~/.zshrc
+      ```
+  - Verify the JAVA_HOME with the following command:
+      ```bash
+      echo $JAVA_HOME
+      ```
+- **For Windows**:
+  - Open Environment variables using windows search bar (search for edit environment variables in the search bar)
+  
+  ![alt text](./Lab-1-4-java-modernization/images/image_env_variables_windows.png)
+
+  - Set JAVA_HOME variable using Environment variables (click on new if you do not have a JAVA_HOME set or click on edit to change the existing JAVA_HOME, and point it to the Java you installed in the earlier steps:
+    
+  ![alt text](./Lab-1-4-java-modernization/images/image_JAVA_HOME_windows.png)
+
+    ```bash
+    JAVA_HOME= C:\Program Files\Java\jdk-21
+    ```
+    
+  - Add Java to PATH using Environment variables:
+ 
+  ![alt text](./Lab-1-4-java-modernization/images/image_add_java_to_PATH_windows.png)
+ 
+    ```bash
+    %JAVA_HOME%\bin
+    ```
+
+
 
 ### 2. Install Maven
-- Windows
+
+- **For Windows**
     - Visit the official Maven website: [Maven Download Page](https://maven.apache.org/download.cgi)
     - Under "Files", click on the binary zip archive link (e.g., apache-maven-x.x.x-bin.zip). 
-    - Extract the zip file to a location of your choice, e.g., C:\Program Files\Apache\maven.
-    - Add Maven to PATH and Set MAVEN_HOME variable 
-- Mac
+    - Extract the zip file to a location of your choice, e.g., C:\Apache\maven.
+    - Set MAVEN_HOME variable using Environment variables:
+      ```bash
+      MAVEN_HOME= <path-to-folder>\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9
+      ```
+    - Add Maven to PATH using Environment variables: 
+      ```bash
+      <path-to-folder>\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
+      ```
+- **For Mac**
    - Install maven using homebrew
+      ```bash
+      brew install maven
+      ```
+   - Check if maven is installed properly:
+      ```bash
+      mvn --version
+      ```
 
-### 3. Install Eclipse
-Eclipse users must install one of these two packages:
-   - Eclipse IDE for Java Developers
-   - Eclipse IDE for Enterprise Java and Web Developers 
 
-Below are the links for eclipse installation
-- [Eclipse 2024-03](https://www.eclipse.org/downloads/packages/release/2024-03/r)
-- [Eclipse 2023-12](https://www.eclipse.org/downloads/packages/release/2023-12/r)
+### 3. Install VSCode
 
-## Install Watsonx Code For Java
-1. Download plugin from this [link](https://img-router.sgp1.cdn.digitaloceanspaces.com/share/com.ibm.wca.java.site-windows-x86_64-0.1.0-SNAPSHOT.zip)
+- [VSCode Official Website](https://code.visualstudio.com/download) for installation
 
-2. After downloding the extension install the wca4ej using eclipse as shown below ![screenshot](./image/1.InstallNewSw.png)
 
-3. Choose the local package or archive and provide the path where the extension files are downloaded. 
-![screenshot](./image/2.LocateLocalPackage.png)
+### 4. WCA API Key ()
 
-4. After the software (extension gets installed), restart your IDE. After restart, navigate to below setting.
-![screenshot](./image/4.ChooseviewEclipse.png)
+You will be given API key by the IBM. If you have any issue accessing the API key, please raise it to the instructor.
 
-5. Then choose the Watson code assistant for enterprise java as below.
-![screenshot](./image/5.ShowWca4ejChatView.png)
 
-6. After this, you will be navigated to below screen, input the API key.
-![screenshot](./image/3.Wca4ejchat.png)
+### 5. Download WCA extension
 
-7. Installing Liberty Tools
-Install the liberty tools (24.0.6) and IBM Liberty Developer Tools (24.1) from eclipse market place as shown below [Help >> Eclipse Marketplace]
-![screenshot](./image/6.LibertyTools.png)
+Download watsonx Code Assistant and watsonx code assistant for enterprise Java extensions from Marketplace
+
+![alt text](./Lab-1-4-java-modernization/images/wca-extensions.png)
+
+Install both the above extensions.
+
+For more details you can see the product page of respective extensions.
+
+![alt text](./Lab-1-4-java-modernization/images/wca-product-image.png)
+
+![alt text](./Lab-1-4-java-modernization/images/wca4ej-extensions.png)
+
+### 6. Login into WCA
+
+
+#### After installing the extension from **Step 5**, 
+
+- Login with WCA API Key at the bottom left corner of VSCode. After successfully signed in, the number indicator should be gone.
+
+![screenshot](./Lab-1-4-java-modernization/images/VSC_WCA4J_Sign_in.png)
+
+
+### 7. Installing Liberty Tools and Java Extension
+
+Install the Liberty Tools and extension Pack for Java extensions from VSCode marketplace as shown below.
+
+![screenshot](./Lab-1-4-java-modernization/images/VSC_LibertyTools.png)
+
+![screenshot](./Lab-1-4-java-modernization/images/VSCode-pack-for-java.png)
+
+### 8. Start Using WCA
+
+You can check by navigating to the **watsonx Code Assistant** tab if your API Key is setup correctly by opening the chat window of WCA and chat with the model.
+
+![screenshot](./Lab-1-4-java-modernization/images/VSC_chat_with_model.png)
